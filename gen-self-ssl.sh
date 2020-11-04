@@ -7,12 +7,12 @@ defaultSubCN="self"
 defaultDays="3650"
 defaultBit="2048"
 
-HOST=""
-PASS=$defaultPass
-SUB_CN=$defaultSubCN
-DAYS=$defaultDays
-BIT=$defaultBit
-ALLOW_FILE=""
+HOST=${HOST}
+PASS=${PASS:-$defaultPass}
+DAYS=${DAYS:-$defaultDays}
+BIT=${BIT:-$defaultBit}
+SUB_CN=${SUB_CN:-$defaultSubCN}
+ALLOW_FILE=${ALLOW_FILE}
 
 Help(){
     echo "Usage: "

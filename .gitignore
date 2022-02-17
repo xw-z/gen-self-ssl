@@ -1,4 +1,1 @@
-ca*
-client*
-server*
-allow.list
+*.pem

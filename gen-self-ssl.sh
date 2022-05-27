@@ -125,12 +125,12 @@ initial() {
     if [ -z "$SERVER_EXTFILE" ]; then
         SERVER_EXTFILE="server-extfile.cnf"
         if [ ! -f "$SERVER_EXTFILE" ]; then
-            IPs=",IP.1:127.0.0.1"
-            IP=$(echo $HOST | grep -E "^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$")
+            IPs="IP.1:127.0.0.1"
+            IP=$( (echo $HOST | grep -E "^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$") || echo "")
             if [ ! -z $IP ]; then
                 IPs="$IPs,IP.2:$IP"
             fi
-            echo -e "extendedKeyUsage = serverAuth\nsubjectAltName = DNS.1:$HOST$IPs" >"$SERVER_EXTFILE"
+            echo -e "extendedKeyUsage = serverAuth\nsubjectAltName = DNS.1:$HOST,$IPs" >"$SERVER_EXTFILE"
             IS_SERVER_EXTFILE_CREATED=1
             log_warn "create template file $SERVER_EXTFILE."
         fi
